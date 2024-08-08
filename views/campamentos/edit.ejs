@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición</title>
+</head>
+
+<body>
+    <form action="/campamentos/<%= campamento._id %>?_method=PUT" method="post">
+        <label for="titulo">Título</label>
+        <input type="text" name="campamento[titulo]" id="titulo" value="<%=campamento.titulo%>">
+        <br>
+        <label for="descripcion">Descripción</label> <br>
+        <textarea name="campamento[descripcion]" id="descripcion" cols="30" rows="10">
+            <%=campamento.descripcion%>
+        </textarea>
+        <br>
+        <label for="precio">Precio</label>
+        <input type="number" name="campamento[precio]" id="precio" value="<%=campamento.precio%>">
+        <br>
+        <label for="ubicacion">Ubicación</label>
+        <input type="text" name="campamento[ubicacion]" id="ubicacion" value="<%=campamento.ubicacion%>">
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="/campamentos">Todos los campamentos</a>
+    </form>
+
+</body>
+
+</html>

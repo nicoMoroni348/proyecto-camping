@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Camping = require('../models/camping')
+const Campamento = require('../models/camping')
 const cities = require('./cities')
 const { descriptors, places } = require('./seedHelpers')
 
@@ -14,13 +14,13 @@ db.once('open', () => {
 const getRndElement = array => array[Math.floor(Math.random() * array.length)]
 
 const seedDB = async () => {
-    await Camping.deleteMany({});
+    await Campamento.deleteMany({});
 
     // Creación de 50 campings
     for (let i = 0; i < 50; i++) {
         const rndCiudad = Math.floor(Math.random() * 1000); // Random entre 0 y 999
     
-        const camp = new Camping({
+        const camp = new Campamento({
             titulo: `${getRndElement(places)} ${getRndElement(descriptors)}`,
             ubicacion: `${cities[rndCiudad].city}, ${cities[rndCiudad].state}`
         })
