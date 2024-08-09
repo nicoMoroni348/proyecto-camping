@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const Campamento = require('./models/camping')
+const ejsMate = require('ejs-mate')
 
 mongoose.connect('mongodb://127.0.0.1:27017/proyecto-camping');
 
@@ -18,6 +19,9 @@ const port = 3000;
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'))
 
+// EJS MATE
+app.engine('ejs', ejsMate);
+
 // Prevent Views error
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -30,16 +34,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', { titulo: 'Home' })
 });
 
 app.get('/campamentos', async (req, res) => {
     const campamentos = await Campamento.find({});
-    res.render('campamentos/index', { campamentos })
+    res.render('campamentos/index', { campamentos, titulo: 'Campamentos' })
 });
 
 app.get('/campamentos/new', (req, res) => {
-    res.render('campamentos/new')
+    res.render('campamentos/new', { titulo: 'Nuevo Campamento' })
 });
 
 app.post('/campamentos', async (req, res) => {
@@ -51,7 +55,7 @@ app.post('/campamentos', async (req, res) => {
 app.get('/campamentos/:id/edit', async (req, res) => {
     const { id } = req.params;
     const campamento = await Campamento.findById(id);
-    res.render('campamentos/edit', { campamento })
+    res.render('campamentos/edit', { campamento, titulo: 'Editar Campamento' })
 });
 
 app.put('/campamentos/:id', async (req, res) => {
@@ -64,7 +68,7 @@ app.put('/campamentos/:id', async (req, res) => {
 app.get('/campamentos/:id', async (req, res) => {
     const { id } = req.params;
     const campamento = await Campamento.findById(id);
-    res.render('campamentos/show', { campamento })
+    res.render('campamentos/show', { campamento, titulo: 'Detalle Campamento' })
 });
 
 app.delete('/campamentos/:id', async (req, res) => {

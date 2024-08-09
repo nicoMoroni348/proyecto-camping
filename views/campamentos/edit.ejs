@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edición</title>
-</head>
-
-<body>
+<% layout('layouts/boilerplate') %>
     <form action="/campamentos/<%= campamento._id %>?_method=PUT" method="post">
         <label for="titulo">Título</label>
         <input type="text" name="campamento[titulo]" id="titulo" value="<%=campamento.titulo%>">
@@ -27,7 +18,3 @@
     </form>
     <a href="/campamentos">Todos los campamentos</a>
     </form>
-
-</body>
-
-</html>

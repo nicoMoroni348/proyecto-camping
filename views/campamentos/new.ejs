@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo</title>
-</head>
-
-<body>
+<% layout('layouts/boilerplate') %>
     <h1>Nuevo Campamento</h1>
     <form action="/campamentos" method="post">
         <label for="titulo">Título</label>
@@ -25,7 +16,3 @@
         <button type="submit">Guardar</button>
     </form>
     <a href="/campamentos">Todos los campamentos</a>
-
-</body>
-
-</html>
