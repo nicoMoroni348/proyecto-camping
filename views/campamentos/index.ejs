@@ -2,11 +2,29 @@
     <h1>Todos los campamentos</h1>
     <ul>
         <% campamentos.forEach(campamento=> { %>
-            <li>
-                <a href="/campamentos/<%= campamento._id %>">
-                    <%= campamento.titulo %>
-                </a>
-            </li>
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<%= campamento.imagen %>" alt="<%= campamento.titulo %>" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-8">
+                        <h5 class="card-title">
+                            <%= campamento.titulo %>
+                        </h5>
+                        <p class="card-text">
+                            <%= campamento.descripcion %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= campamento.ubicacion %>
+                            </small>
+                        </p>
+
+                        <a href="/campamentos/<%= campamento._id %>" class="btn btn-primary">
+                            Ver más
+                        </a>
+                    </div>
+                </div>
+            </div>
             <% }); %>
     </ul>
-    <a href="/campamentos/new">Nuevo Campamento</a>
